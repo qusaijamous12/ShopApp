@@ -11,27 +11,30 @@ import 'package:shopapp/Shopapp/moduels/LoginScreen/LoginScreen.dart';
 import 'package:shopapp/Shopapp/moduels/Onboard/onBoard_Screen.dart';
 import 'package:shopapp/Shopapp/moduels/homescreen/cubit/cubit.dart';
 import 'package:shopapp/Shopapp/moduels/homescreen/homescreen.dart';
-import 'package:shopapp/SocialApp/homeSocailScreen.dart';
+
 
 import 'Shared/Constants/constants.dart';
 import 'Shared/observer/observer.dart';
-import 'SocialApp/loginsocialApp/login_social.dart';
 import 'firebase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  FirebaseFirestore firestore=FirebaseFirestore.instance;
 
   Bloc.observer = MyBlocObserver();
+
   DioHelper.init();
+
   await CasheHelper.init();
+
   dynamic onBoard=CasheHelper.GetData(key:'onBoard');
+
   token=CasheHelper.GetData(key:'token');
+
   print(onBoard);
   print(token);
+
+
+
 
 
   Widget ?StartScreen;
@@ -49,12 +52,14 @@ void main() async{
     StartScreen=OnBoardScreen();
   }
 
-  runApp(MyApp(StartScreen));
+  runApp(MyApp(StartScreen
+  ));
 }
 class MyApp extends StatelessWidget{
 
   Widget ?widget;
-  MyApp(this.widget);
+  MyApp(this.widget
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +68,7 @@ class MyApp extends StatelessWidget{
         BlocProvider(create: (BuildContext context)=>ShopAppCubit()..GetData()..GetCategoriesData()..GetFavorateData()..GetProfileData()),
       ],
       child: MaterialApp(
-        home: SocialLoginScreen(),
+        home: widget,
         theme: lightTheme(),
         debugShowCheckedModeBanner: false,
 

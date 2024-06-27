@@ -16,5 +16,11 @@ ThemeData lightTheme()=>ThemeData(
         )
 
     ),
-    scaffoldBackgroundColor: Colors.white
+    scaffoldBackgroundColor: Colors.white,
+    textTheme: TextTheme(
+        titleLarge: TextStyle(
+           fontFamily: 'jannah'
+        ),
+    )
+
 );
